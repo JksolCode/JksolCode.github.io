@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <title>Document</title>
+</head>
+<body>
+    <section>
+   
+<!--      
+    <img id="btn" src="btn_google_signin_light_normal_web.png" alt="Sign in with Google"/> -->
+     
+    </section>
+    
+      <!-- Add the Google Sign-In script here -->
+   
+<script src="https://accounts.google.com/gsi/client" async defer ></script>
+<script>
+  window.onGoogleLibraryLoad = () => {
+  google.accounts.id.initialize({
+    client_id:'390762603984-lbdjhgffolaq6eb6jemsljand6orptqs.apps.googleusercontent.com',
+    cancel_on_tap_outside: false,
+
+  });
+
+}
+  // Function to prompt the user for login when the button is clicked
+function handleLoginButtonClick() {
+google.accounts.id.prompt((notification) => {
+  if (notification.isNotDisplayed()) {
+    console.log(notification.getNotDisplayedReason());
+  } else if (notification.isSkippedMoment()) {
+    console.log(notification.getSkippedReason());
+  } else if (notification.isDismissedMoment()) {
+    console.log(notification.getDismissedReason());
+  } else {
+    // The user is successfully signed in
+    // You can handle the signed-in user here
+  }
+});
+}
+
+    // document.getElementById('btn').addEventListener('click', handleLoginButtonClick);
+        // Attach the click event listener to the button
+  
+</script>
+</body>
+</html>
